@@ -10,6 +10,8 @@ import {
 } from '@backstage/core-components';
 import React from 'react';
 import { StarBrowser } from '../StarBrowser';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { queryClient } from '../../lib/query-client';
 
 export const RecruitmentTaskPage = () => (
   <Page themeId="tool">
@@ -21,7 +23,7 @@ export const RecruitmentTaskPage = () => (
         <Grid item>
           <InfoCard title="Instructions">
             <Typography variant="body1">
-              <p>
+              <p className="text-red-500">
                 Below is a list of stars. Your first task is to transform the
                 data into a more user-friendly format by organizing it into a
                 table instead of a list.
@@ -42,7 +44,9 @@ export const RecruitmentTaskPage = () => (
           </InfoCard>
         </Grid>
         <Grid item>
-          <StarBrowser />
+          <QueryClientProvider client={queryClient}>
+            <StarBrowser />
+          </QueryClientProvider>
         </Grid>
       </Grid>
     </Content>

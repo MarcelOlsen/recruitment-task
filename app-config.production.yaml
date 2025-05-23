@@ -53,3 +53,17 @@ catalog:
       target: ./examples/org.yaml
       rules:
         - allow: [User, Group]
+
+proxy:
+  # Add an endpoint for the star-api backend plugin.
+  # This will make requests to /star-api/* in the frontend be proxied to the star-api backend.
+  '/star-api/stars':
+    target: 'http://localhost:7007/api/star-api/stars' # Assuming your plugin is mounted at /api/star-api
+    changeOrigin: true
+    # Optional: Add headers to be forwarded to the target.
+    # headers:
+    #   X-Something: 'some-value'
+  ### Example for how to add a proxy endpoint for the frontend.
+  ### A typical reason to do this is to handle HTTPS and CORS for internal services.
+  # endpoints:
+  #   '/test':
