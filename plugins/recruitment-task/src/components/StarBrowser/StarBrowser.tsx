@@ -510,7 +510,11 @@ export const StarBrowserSuspense = () => {
         }}
       >
         <Table stickyHeader aria-label="Stars table">
-          <TableHead sx={{ backgroundColor: '#6c757d' }}>
+          <TableHead
+            sx={{
+              backgroundColor: '#6c757d',
+            }}
+          >
             <TableRow>
               {sortableTableHeaders.map(headCell => (
                 <TableCell
